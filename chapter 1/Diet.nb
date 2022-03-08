@@ -1,0 +1,982 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     34860,        973]
+NotebookOptionsPosition[     33054,        915]
+NotebookOutlinePosition[     33576,        935]
+CellTagsIndexPosition[     33533,        932]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Input Problems", "Title"],
+
+Cell["Text Reference: Section 1.10", "Subsubtitle",
+ CellChangeTimes->{{3.5054992763790874`*^9, 3.5054992769281187`*^9}, 
+   3.5054998605715013`*^9, {3.6173780241158843`*^9, 3.617378026358013*^9}},
+ FontWeight->"Bold"],
+
+Cell["\<\
+The purpose of this set of exercises is to provide examples of vector \
+equations which result from balancing nutrients in a diet.
+
+Section 1.10 shows how use a vector equation \
+\>", "Text",
+ FontFamily->"Arial"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["x", "1"], 
+    StyleBox[
+     SubscriptBox["a", "1"],
+     FontWeight->"Bold",
+     FontSlant->"Italic"]}], 
+   StyleBox["+",
+    FontWeight->"Bold"], 
+   RowBox[{
+    SubscriptBox["x", "2"], 
+    StyleBox[
+     SubscriptBox["a", "2"],
+     FontWeight->"Bold",
+     FontSlant->"Italic"]}], 
+   StyleBox["+",
+    FontWeight->"Bold"], 
+   StyleBox[" ",
+    FontWeight->"Bold"], 
+   RowBox[{
+    RowBox[{
+     StyleBox[".",
+      FontWeight->"Plain"], 
+     StyleBox[" ",
+      FontWeight->"Plain"], 
+     StyleBox[".",
+      FontWeight->"Plain"], 
+     StyleBox[" ",
+      FontWeight->"Plain"], 
+     StyleBox[".",
+      FontWeight->"Plain"], 
+     StyleBox[" ",
+      FontWeight->"Plain"], 
+     RowBox[{
+      StyleBox["+",
+       FontWeight->"Plain"], 
+      SubscriptBox["x", "n"]}]}], 
+    StyleBox[
+     SubscriptBox["a", "n"],
+     FontWeight->"Bold"]}]}], 
+  StyleBox[" ",
+   FontWeight->"Bold"], 
+  StyleBox["=",
+   FontWeight->"Bold"], 
+  StyleBox[" ",
+   FontWeight->"Bold"], 
+  StyleBox["b",
+   FontWeight->"Bold"]}]], "DisplayFormula",
+ TextAlignment->Center,
+ FontFamily->"Arial"],
+
+Cell[TextData[{
+ "to model a diet with a specified nutritional intake.  Each vector  ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["a", "i"],
+    FontWeight->"Bold"], TraditionalForm]]],
+ " lists the nutrient composition of one unit (usually 100 grams) of \
+foodstuff, and the corresponding weight ",
+ Cell[BoxData[
+  SubscriptBox["x", "i"]],
+  TextAlignment->Center],
+ "is the variable that represents the amount (number of units) of that \
+foodstuff to be used in the diet.  The vector ",
+ StyleBox["b",
+  FontWeight->"Bold"],
+ " lists the amount of each nutrient that must be in the diet.\n\nTable 2 \
+below is a listing of the nutritional value of many foods found in a typical \
+\nkitchen.  The nutrients are given per 100 grams of foodstuff.  This data is \
+taken from \nthe USDA Nutrient Database for Standard Reference available at \
+the United States Department of Agriculture website, whose web address is  ",
+ StyleBox["http://www.nal.usda. gov/fnic/foodcomp",
+  FontFamily->"Courier"],
+ ".  The columns represent respectively the following foodstuffs: beef, \
+brussels sprouts, carrots, chicken soup, egg, feta cheese, grapefruit, \
+lentils, lettuce, milk, mushrooms, oil, onion, rice, salad dressing, salmon, \
+soy sauce, spinach, tomato, and vanilla ice cream. Table 1 gives the standard \
+serving size for each of these foodstuffs, and also gives a key to the \
+columns in Table 2.\n"
+}], "Text",
+ FontFamily->"Arial"],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"Key", " ", "Number"}], "Foodstuff", 
+    RowBox[{"Serving", " ", "Size"}]},
+   {"1", 
+    RowBox[{"Beef", " "}], 
+    RowBox[{
+     RowBox[{"6", 
+      RowBox[{"oz", "."}]}], "=", 
+     RowBox[{"170", "g"}]}]},
+   {"2", 
+    RowBox[{"Brussels", " ", "Sprouts"}], 
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "2"}], " ", "cup"}], " ", "=", " ", 
+     RowBox[{"78", " ", "g"}]}]},
+   {"3", 
+    RowBox[{"Carrots", "  "}], 
+    RowBox[{
+     RowBox[{"1", " ", "carrot"}], " ", "=", " ", 
+     RowBox[{"61", " ", "g"}]}]},
+   {"4", 
+    RowBox[{"Chicken", " ", "Soup"}], 
+    RowBox[{
+     RowBox[{"1", " ", "cup"}], " ", "=", " ", 
+     RowBox[{"240", " ", "g"}]}]},
+   {"5", "Egg", 
+    RowBox[{
+     RowBox[{"1", " ", "egg"}], " ", "=", " ", 
+     RowBox[{"61", " ", "g"}]}]},
+   {"6", 
+    RowBox[{"Feta", " ", "Cheese"}], 
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "4"}], " ", "cup"}], " ", "=", " ", 
+     RowBox[{"38", " ", "g"}]}]},
+   {"7", "Grapefruit", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "2"}], " ", "fruit"}], " ", "=", " ", 
+     RowBox[{"123", " ", "g"}]}]},
+   {"8", 
+    RowBox[{"Lentils", " "}], 
+    RowBox[{
+     RowBox[{"1", " ", "cup"}], " ", "=", " ", 
+     RowBox[{"198", " ", "g"}]}]},
+   {"9", 
+    RowBox[{"Lettuce", " "}], 
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "2"}], " ", "cup"}], " ", "=", " ", 
+     RowBox[{"28", " ", "g"}]}]},
+   {"10", 
+    RowBox[{"Milk", " "}], 
+    RowBox[{
+     RowBox[{"1", " ", "cup"}], " ", "=", " ", 
+     RowBox[{"244", " ", "g"}]}]},
+   {"11", "Mushrooms", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "2"}], " ", "cup"}], " ", "=", " ", 
+     RowBox[{"35", " ", "g"}]}]},
+   {"12", "Oil", 
+    RowBox[{
+     RowBox[{"1", " ", 
+      RowBox[{"Tbsp", "."}]}], " ", "=", " ", 
+     RowBox[{"13.5", " ", "g"}]}]},
+   {"13", "Onion", 
+    RowBox[{
+     RowBox[{"1", " ", "onion"}], " ", "=", " ", 
+     RowBox[{"110", " ", "g"}]}]},
+   {"14", "Rice", 
+    RowBox[{
+     RowBox[{"1", " ", "cup"}], " ", "=", " ", 
+     RowBox[{"158", " ", "g"}]}]},
+   {"15", 
+    RowBox[{"Salad", " ", "Dressing"}], 
+    RowBox[{
+     RowBox[{"1", " ", "cup"}], " ", "=", " ", 
+     RowBox[{"250", " ", "g"}]}]},
+   {"16", "Salmon", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "2"}], " ", "fillet"}], "=", " ", 
+     RowBox[{"124", " ", "g"}]}]},
+   {"17", 
+    RowBox[{"Soy", " ", "Sauce"}], 
+    RowBox[{
+     RowBox[{"1", " ", 
+      RowBox[{"Tbsp", "."}]}], " ", "=", " ", 
+     RowBox[{"18", " ", "g"}]}]},
+   {"18", "Spinach", 
+    RowBox[{
+     RowBox[{"1", " ", "cup"}], " ", "=", " ", 
+     RowBox[{"180", " ", "g"}]}]},
+   {"19", "Tomato", 
+    RowBox[{
+     RowBox[{"1", " ", "tomato"}], " ", "=", " ", 
+     RowBox[{"123", " ", "g"}]}]},
+   {"20", 
+    RowBox[{"Vanilla", " ", "Ice", " ", "Cream"}], 
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "2"}], " ", "cup"}], " ", "=", " ", 
+     RowBox[{"66", " ", "g"}]}]}
+  },
+  GridBoxDividers->{
+   "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+    "RowsIndexed" -> {}}]], "Text",
+ TextAlignment->Center,
+ FontFamily->"Arial"],
+
+Cell["Table 1: Serving Sizes of Various Foodstuffs", "Text",
+ TextAlignment->Center,
+ FontFamily->"Arial"],
+
+Cell[TextData[Cell[BoxData[
+ StyleBox[GridBox[{
+    {"Nutrient", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
+    {
+     RowBox[{"Calories", " ", 
+      RowBox[{"(", "kcal", ")"}]}], "215", "39", "43", "73", "152", "263", 
+     "30", "116", "14", "61.44"},
+    {
+     RowBox[{"Protein", " ", 
+      RowBox[{"(", "g", ")"}]}], "26", "2.55", "1.03", "5.3", "10.33", "14.2",
+      ".55", "9.02", "1.62", "3.29"},
+    {
+     RowBox[{"Fat", " ", 
+      RowBox[{"(", "g", ")"}]}], "11.5", ".51", ".19", "2.5", "11.44", "21.3",
+      ".1", ".38", ".2", "3.34"},
+    {
+     RowBox[{"Carbohydrates", " ", 
+      RowBox[{"(", "g", ")"}]}], "0", "8.6", "10.1", "7.1", "1.04", "4.09", 
+     "7.68", "20.14", "2.37", "4.66"},
+    {
+     RowBox[{"Calcium", " ", 
+      RowBox[{"(", "mg", ")"}]}], "7", "36", "27", "10", "42", "492.5", "11", 
+     "19", "36", "119.4"},
+    {
+     RowBox[{"Iron", " ", 
+      RowBox[{"(", "mg", ")"}]}], "3.1", "1.2", ".5", ".6", "1.19", ".65", 
+     ".12", "3.33", "1.1", ".05"},
+    {
+     RowBox[{"Magnesium", " ", 
+      RowBox[{"(", "mg", ")"}]}], "27", "20", "15", "4", "9", "19.2", "8", 
+     "36", "6", "13.44"},
+    {
+     RowBox[{"Phosphorus", " ", 
+      RowBox[{"(", "mg", ")"}]}], "211", "56", "44", "30", "148", "337", "9", 
+     "180", "45", "93.4"},
+    {
+     RowBox[{"Potassium", " ", 
+      RowBox[{"(", "mg", ")"}]}], "367", "317", "323", "45", "101", "61.8", 
+     "129", "369", "290", "151.5"},
+    {
+     RowBox[{"Sodium", " ", 
+      RowBox[{"(", "mg", ")"}]}], "69", "21", "35", "354", "270", "1116", "0",
+      "2", "8", "49"},
+    {
+     RowBox[{"Zinc", 
+      RowBox[{"(", "mg", ")"}]}], "5290", ".33", ".2", ".4", ".92", "2.88", 
+     ".07", "1.27", ".25", ".38"},
+    {
+     RowBox[{"Copper", " ", 
+      RowBox[{"(", "mcg", ")"}]}], ".143", ".083", ".047", ".1", ".013", 
+     ".032", ".044", ".251", ".037", ".01"},
+    {
+     RowBox[{"Vitamin", " ", "C", " ", 
+      RowBox[{"(", "mg", ")"}]}], "0", "62", "9.3", "0", "0", "0", "38.1", 
+     "1.5", "24", ".94"},
+    {
+     RowBox[{"Thiamine", " ", 
+      RowBox[{"(", "mg", ")"}]}], ".11", ".107", ".097", ".03", ".044", 
+     ".154", ".034", ".169", ".1", ".038"},
+    {
+     RowBox[{"Riboflavin", " ", 
+      RowBox[{"(", "mg", ")"}]}], ".25", ".08", ".059", ".07", ".399", ".844",
+      ".02", ".073", ".1", ".162"},
+    {
+     RowBox[{"Niacin", " ", 
+      RowBox[{"(", "mg", ")"}]}], "4.63", ".607", ".928", "1.8", ".058", 
+     ".991", ".191", "1.06", ".5", ".084"},
+    {
+     RowBox[{"Pantothenic", " ", "Acid", " ", 
+      RowBox[{"(", "mg", ")"}]}], ".34", ".252", ".197", "15", ".934", ".967",
+      ".283", ".638", ".17", ".314"},
+    {
+     RowBox[{"Vitamin", " ", "B6", " ", 
+      RowBox[{"(", "mg", ")"}]}], ".4", ".178", "147", ".02", ".109", ".424", 
+     ".042", ".178", ".047", ".042"},
+    {
+     RowBox[{"Vitamin", " ", "B12", " ", 
+      RowBox[{"(", "mcg", ")"}]}], "2.27", "0", "0", ".13", ".7", "1.69", "0",
+      "0", "0", ".357"},
+    {
+     RowBox[{"Vitamin", " ", "A", " ", 
+      RowBox[{"(", "IU", ")"}]}], "0", "719", "28129", "509", "654", "447", 
+     "259", "8", "2600", "126"}
+   },
+   GridBoxDividers->{
+    "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.35]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  FontFamily->"Arial"]],
+ FontFamily->"Arial"]], "Text",
+ TextAlignment->Center,
+ FontFamily->"Arial"],
+
+Cell[BoxData[
+ StyleBox[GridBox[{
+    {"Nutrient", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"},
+    {
+     RowBox[{"Calories", " ", 
+      RowBox[{"(", "kcal", ")"}]}], "25", "884", "38", "130", "448.8", "149", 
+     "60", "23", "21", "201"},
+    {
+     RowBox[{"Protein", " ", 
+      RowBox[{"(", "g", ")"}]}], "2.09", "0", "1.16", "2.69", "0", "25.56", 
+     "10.51", "2.9", ".85", "3.5"},
+    {
+     RowBox[{"Fat", " ", 
+      RowBox[{"(", "g", ")"}]}], ".42", "100", ".16", ".28", "50.1", "4.42", 
+     ".1", ".26", ".33", "11"},
+    {
+     RowBox[{"Carbohydrates", " ", 
+      RowBox[{"(", "g", ")"}]}], "4.65", "1", "8.63", "28.17", "2.5", "0", 
+     "5.57", "3.75", "4.64", "23.6"},
+    {
+     RowBox[{"Calcium", " ", 
+      RowBox[{"(", "mg", ")"}]}], "5", ".18", "20", "10", "0", "17", "20", 
+     "136", "5", "128"},
+    {
+     RowBox[{"Iron", " ", 
+      RowBox[{"(", "mg", ")"}]}], "1.24", ".38", ".22", "1.2", "0", ".99", 
+     "2.38", "3.57", ".45", ".09"},
+    {
+     RowBox[{"Magnesium", " ", 
+      RowBox[{"(", "mg", ")"}]}], "10", ".01", "10", "12", "0", "33", "40", 
+     "87", "11", "14"},
+    {
+     RowBox[{"Phosphorus", " ", 
+      RowBox[{"(", "mg", ")"}]}], "104", "1.22", "33", "43", "0", "295", 
+     "130", "56", "24", "105"},
+    {
+     RowBox[{"Potassium", " ", 
+      RowBox[{"(", "mg", ")"}]}], "370", "0", "157", "35", "7.5", "414", 
+     "212", "466", "222", "199"},
+    {
+     RowBox[{"Sodium", " ", 
+      RowBox[{"(", "mg", ")"}]}], "4", ".04", "3", "1", ".5", "86", "5586", 
+     "70", "9", "80"},
+    {
+     RowBox[{"Zinc", 
+      RowBox[{"(", "mg", ")"}]}], ".73", ".06", ".19", ".49", "0", ".71", 
+     ".43", ".76", ".09", ".69"},
+    {
+     RowBox[{"Copper", " ", 
+      RowBox[{"(", "mcg", ")"}]}], ".492", "0", ".06", ".069", "0", ".099", 
+     ".135", ".174", ".074", ".023"},
+    {
+     RowBox[{"Vitamin", " ", "C", " ", 
+      RowBox[{"(", "mg", ")"}]}], "3.5", "0", "6.4", "0", "0", "0", "0", 
+     "9.8", "19.1", ".6"},
+    {
+     RowBox[{"Thiamine", " ", 
+      RowBox[{"(", "mg", ")"}]}], ".102", "0", ".042", ".163", "0", ".196", 
+     ".059", ".095", ".059", ".041"},
+    {
+     RowBox[{"Riboflavin", " ", 
+      RowBox[{"(", "mg", ")"}]}], ".449", "0", ".02", ".013", "0", ".073", 
+     ".152", ".236", ".048", ".24"},
+    {
+     RowBox[{"Niacin", " ", 
+      RowBox[{"(", "mg", ")"}]}], "40116", "0", ".148", "1.476", "0", "8.526",
+      "3.951", ".49", ".628", ".116"},
+    {
+     RowBox[{"Pantothenic", " ", "Acid", " ", 
+      RowBox[{"(", "mg", ")"}]}], "2.2", "0", ".106", ".39", "0", ".865", 
+     ".376", ".145", ".247", ".581"},
+    {
+     RowBox[{"Vitamin", " ", "B6", " ", 
+      RowBox[{"(", "mg", ")"}]}], ".097", "0", ".116", ".093", "0", ".231", 
+     ".2", ".242", ".08", ".048"},
+    {
+     RowBox[{"Vitamin", " ", "B12", " ", 
+      RowBox[{"(", "mcg", ")"}]}], "0", "0", "0", "0", "0", "3.46", "0", "0", 
+     "0", ".39"},
+    {
+     RowBox[{"Vitamin", " ", "A", " ", 
+      RowBox[{"(", "IU", ")"}]}], "0", "0", "0", "0", "0", "136", "0", "8190",
+      "623", "409"}
+   },
+   GridBoxDividers->{
+    "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.35]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  FontFamily->"Arial"]], "Text",
+ TextAlignment->Center],
+
+Cell["\<\
+Table 2: Nutritional Values of Various Foods per 100 g of Foodstuff\
+\>", "Text",
+ TextAlignment->Center,
+ FontFamily->"Arial"],
+
+Cell["Questions:", "Text",
+ FontFamily->"Arial",
+ FontWeight->"Bold"],
+
+Cell["\<\
+1. Low carbohydrate diets are popular for weight loss. Compute (by hand) the \
+amount of carbohydrates in each of the following dishes, and determine which \
+would be better for such a dieter to choose.  You will first need to use \
+Table 1 to convert the kitchen measures into 100 gram units, then use Table 2 \
+to find the amount of carbohydrates in each ingredient.\
+\>", "Text",
+ FontFamily->"Arial"],
+
+Cell["\<\
+Spinach omelet: 1/4 cup spinach, 2 eggs, 1/8 cup milk, 1/2 Tbsp. oil\
+\>", "Text",
+ FontFamily->"Arial"],
+
+Cell["\<\
+Greek salad: 1 cup lettuce, 1/4 cup feta cheese, 1/2 of a tomato, 1/8 cup \
+salad dressing \
+\>", "Text",
+ FontFamily->"Arial"],
+
+Cell["\<\
+2. To make a stir fry, fry beef and onions in a wok with oil, and top it with \
+soy sauce.\
+\>", "Text",
+ FontFamily->"Arial"],
+
+Cell["\<\
+a) You would like to make a stir fry with a total of 6 g carbohydrates, 50 g \
+protein, and 3.5 mg vitamin C, and you'd like this dish to contain only 575 \
+calories. Use Table 2 to set up a matrix equation which could be used to \
+determine whether it is possible to make such a stir fry.  Describe the steps \
+you take to produce the vectors in the equation.\
+\>", "Text",
+ FontFamily->"Arial"],
+
+Cell["\<\
+b) Find a precise recipe for the stir fry in part a).  Convert your amounts \
+to common kitchen measures using Table 1.\
+\>", "Text",
+ FontFamily->"Arial"],
+
+Cell["3. Table 2 has been incorporated into the matrix A.", "Text",
+ FontFamily->"Arial"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "215", ",", "39", ",", "43", ",", "73", ",", "152", ",", "263", ",", 
+       "30", ",", "116", ",", "14", ",", "61.44", ",", "25", ",", "884", ",", 
+       "38", ",", "130", ",", "448.8", ",", "149", ",", "60", ",", "23", ",", 
+       "21", ",", "201"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "26", ",", "2.55", ",", "1.03", ",", "5.3", ",", "10.33", ",", "14.2", 
+       ",", "0.55", ",", "9.02", ",", "1.62", ",", "3.29", ",", "2.09", ",", 
+       "0", ",", "1.16", ",", "2.69", ",", "0", ",", "25.56", ",", "10.51", 
+       ",", "2.9", ",", "0.85", ",", "3.5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "11.5", ",", "0.51", ",", "0.19", ",", "2.5", ",", "11.44", ",", "21.3",
+        ",", "0.1", ",", "0.38", ",", "0.2", ",", "3.34", ",", "0.42", ",", 
+       "100", ",", "0.16", ",", "0.28", ",", "50.1", ",", "4.42", ",", "0.1", 
+       ",", "0.26", ",", "0.33", ",", "11"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", "8.6", ",", "10.1", ",", "7.1", ",", "1.04", ",", "4.09", ",",
+        "7.68", ",", "20.14", ",", "2.37", ",", "4.66", ",", "4.65", ",", "0",
+        ",", "8.63", ",", "28.17", ",", "2.5", ",", "0", ",", "5.57", ",", 
+       "3.75", ",", "4.64", ",", "23.6"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "7", ",", "36", ",", "27", ",", "10", ",", "42", ",", "492.5", ",", 
+       "11", ",", "19", ",", "36", ",", "119.4", ",", "5", ",", "0.18", ",", 
+       "20", ",", "10", ",", "0", ",", "17", ",", "20", ",", "136", ",", "5", 
+       ",", "128"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "3.1", ",", "1.2", ",", "0.5", ",", "0.6", ",", "1.19", ",", "0.65", 
+       ",", "0.12", ",", "3.33", ",", "1.1", ",", "0.05", ",", "1.24", ",", 
+       "0.38", ",", "0.22", ",", "1.2", ",", "0", ",", "0.99", ",", "2.38", 
+       ",", "3.57", ",", "0.45", ",", "0.09"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "27", ",", "20", ",", "15", ",", "4", ",", "9", ",", "19.2", ",", "8", 
+       ",", "36", ",", "6", ",", "13.44", ",", "10", ",", "0.01", ",", "10", 
+       ",", "12", ",", "0", ",", "33", ",", "40", ",", "87", ",", "11", ",", 
+       "14"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "211", ",", "56", ",", "44", ",", "30", ",", "148", ",", "337", ",", 
+       "9", ",", "180", ",", "45", ",", "93.4", ",", "104", ",", "1.22", ",", 
+       "33", ",", "43", ",", "0", ",", "295", ",", "130", ",", "56", ",", 
+       "24", ",", "105"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "367", ",", "317", ",", "323", ",", "45", ",", "101", ",", "61.8", ",", 
+       "129", ",", "369", ",", "290", ",", "151.5", ",", "370", ",", "0", ",",
+        "157", ",", "35", ",", "7.5", ",", "414", ",", "212", ",", "466", ",",
+        "222", ",", "199"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "69", ",", "21", ",", "35", ",", "354", ",", "270", ",", "1116", ",", 
+       "0", ",", "2", ",", "8", ",", "49", ",", "4", ",", "0.04", ",", "3", 
+       ",", "1", ",", "0.5", ",", "86", ",", "5586", ",", "70", ",", "9", ",",
+        "80"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "5290", ",", "0.33", ",", "0.2", ",", "0.4", ",", "0.92", ",", "2.88", 
+       ",", "0.07", ",", "1.27", ",", "0.25", ",", "0.38", ",", "0.73", ",", 
+       "0.06", ",", "0.19", ",", "0.49", ",", "0", ",", "0.71", ",", "0.43", 
+       ",", "0.76", ",", "0.09", ",", "0.69"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.143", ",", "0.083", ",", "0.047", ",", "0.1", ",", "0.013", ",", 
+       "0.032", ",", "0.044", ",", "0.251", ",", "0.037", ",", "0.01", ",", 
+       "0.492", ",", "0", ",", "0.06", ",", "0.069", ",", "0", ",", "0.099", 
+       ",", "0.135", ",", "0.174", ",", "0.074", ",", "0.023"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", "62", ",", "9.3", ",", "0", ",", "0", ",", "0", ",", "38.1", 
+       ",", "1.5", ",", "24", ",", "0.94", ",", "3.5", ",", "0", ",", "6.4", 
+       ",", "0", ",", "0", ",", "0", ",", "0", ",", "9.8", ",", "19.1", ",", 
+       "0.6"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.11", ",", "0.107", ",", "0.097", ",", "0.03", ",", "0.044", ",", 
+       "0.154", ",", "0.034", ",", "0.169", ",", "0.1", ",", "0.038", ",", 
+       "0.102", ",", "0", ",", "0.042", ",", "0.163", ",", "0", ",", "0.196", 
+       ",", "0.059", ",", "0.095", ",", "0.059", ",", "0.041"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.25", ",", "0.08", ",", "0.059", ",", "0.07", ",", "0.399", ",", 
+       "0.844", ",", "0.02", ",", "0.073", ",", "0.1", ",", "0.162", ",", 
+       "0.449", ",", "0", ",", "0.02", ",", "0.013", ",", "0", ",", "0.073", 
+       ",", "0.152", ",", "0.236", ",", "0.048", ",", "0.24"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "4.63", ",", "0.607", ",", "0.928", ",", "1.8", ",", "0.058", ",", 
+       "0.991", ",", "0.191", ",", "1.06", ",", "0.5", ",", "0.084", ",", 
+       "40116", ",", "0", ",", "0.148", ",", "1.476", ",", "0", ",", "8.526", 
+       ",", "3.951", ",", "0.49", ",", "0.628", ",", "0.116"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.34", ",", "0.252", ",", "0.197", ",", "15", ",", "0.934", ",", 
+       "0.967", ",", "0.283", ",", "0.638", ",", "0.17", ",", "0.314", ",", 
+       "2.2", ",", "0", ",", "0.106", ",", "0.39", ",", "0", ",", "0.865", 
+       ",", "0.376", ",", "0.145", ",", "0.247", ",", "0.581"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.4", ",", "0.178", ",", "147", ",", "0.02", ",", "0.109", ",", 
+       "0.424", ",", "0.042", ",", "0.178", ",", "0.047", ",", "0.042", ",", 
+       "0.097", ",", "0", ",", "0.116", ",", "0.093", ",", "0", ",", "0.231", 
+       ",", "0.2", ",", "0.242", ",", "0.08", ",", "0.048"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "2.27", ",", "0", ",", "0", ",", "0.13", ",", "0.7", ",", "1.69", ",", 
+       "0", ",", "0", ",", "0", ",", "0.357", ",", "0", ",", "0", ",", "0", 
+       ",", "0", ",", "0", ",", "3.46", ",", "0", ",", "0", ",", "0", ",", 
+       "0.39"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", "719", ",", "28129", ",", "509", ",", "654", ",", "447", ",", 
+       "259", ",", "8", ",", "2600", ",", "126", ",", "0", ",", "0", ",", "0",
+        ",", "0", ",", "0", ",", "136", ",", "0", ",", "8190", ",", "623", 
+       ",", "409"}], "}"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.50549908742328*^9, 3.505499100028001*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"215", "39", "43", "73", "152", "263", "30", "116", "14", "61.44`", 
+      "25", "884", "38", "130", "448.8`", "149", "60", "23", "21", "201"},
+     {"26", "2.55`", "1.03`", "5.3`", "10.33`", "14.2`", "0.55`", "9.02`", 
+      "1.62`", "3.29`", "2.09`", "0", "1.16`", "2.69`", "0", "25.56`", 
+      "10.51`", "2.9`", "0.85`", "3.5`"},
+     {"11.5`", "0.51`", "0.19`", "2.5`", "11.44`", "21.3`", "0.1`", "0.38`", 
+      "0.2`", "3.34`", "0.42`", "100", "0.16`", "0.28`", "50.1`", "4.42`", 
+      "0.1`", "0.26`", "0.33`", "11"},
+     {"0", "8.6`", "10.1`", "7.1`", "1.04`", "4.09`", "7.68`", "20.14`", 
+      "2.37`", "4.66`", "4.65`", "0", "8.63`", "28.17`", "2.5`", "0", "5.57`",
+       "3.75`", "4.64`", "23.6`"},
+     {"7", "36", "27", "10", "42", "492.5`", "11", "19", "36", "119.4`", "5", 
+      "0.18`", "20", "10", "0", "17", "20", "136", "5", "128"},
+     {"3.1`", "1.2`", "0.5`", "0.6`", "1.19`", "0.65`", "0.12`", "3.33`", 
+      "1.1`", "0.05`", "1.24`", "0.38`", "0.22`", "1.2`", "0", "0.99`", 
+      "2.38`", "3.57`", "0.45`", "0.09`"},
+     {"27", "20", "15", "4", "9", "19.2`", "8", "36", "6", "13.44`", "10", 
+      "0.01`", "10", "12", "0", "33", "40", "87", "11", "14"},
+     {"211", "56", "44", "30", "148", "337", "9", "180", "45", "93.4`", "104",
+       "1.22`", "33", "43", "0", "295", "130", "56", "24", "105"},
+     {"367", "317", "323", "45", "101", "61.8`", "129", "369", "290", 
+      "151.5`", "370", "0", "157", "35", "7.5`", "414", "212", "466", "222", 
+      "199"},
+     {"69", "21", "35", "354", "270", "1116", "0", "2", "8", "49", "4", 
+      "0.04`", "3", "1", "0.5`", "86", "5586", "70", "9", "80"},
+     {"5290", "0.33`", "0.2`", "0.4`", "0.92`", "2.88`", "0.07`", "1.27`", 
+      "0.25`", "0.38`", "0.73`", "0.06`", "0.19`", "0.49`", "0", "0.71`", 
+      "0.43`", "0.76`", "0.09`", "0.69`"},
+     {"0.143`", "0.083`", "0.047`", "0.1`", "0.013`", "0.032`", "0.044`", 
+      "0.251`", "0.037`", "0.01`", "0.492`", "0", "0.06`", "0.069`", "0", 
+      "0.099`", "0.135`", "0.174`", "0.074`", "0.023`"},
+     {"0", "62", "9.3`", "0", "0", "0", "38.1`", "1.5`", "24", "0.94`", 
+      "3.5`", "0", "6.4`", "0", "0", "0", "0", "9.8`", "19.1`", "0.6`"},
+     {"0.11`", "0.107`", "0.097`", "0.03`", "0.044`", "0.154`", "0.034`", 
+      "0.169`", "0.1`", "0.038`", "0.102`", "0", "0.042`", "0.163`", "0", 
+      "0.196`", "0.059`", "0.095`", "0.059`", "0.041`"},
+     {"0.25`", "0.08`", "0.059`", "0.07`", "0.399`", "0.844`", "0.02`", 
+      "0.073`", "0.1`", "0.162`", "0.449`", "0", "0.02`", "0.013`", "0", 
+      "0.073`", "0.152`", "0.236`", "0.048`", "0.24`"},
+     {"4.63`", "0.607`", "0.928`", "1.8`", "0.058`", "0.991`", "0.191`", 
+      "1.06`", "0.5`", "0.084`", "40116", "0", "0.148`", "1.476`", "0", 
+      "8.526`", "3.951`", "0.49`", "0.628`", "0.116`"},
+     {"0.34`", "0.252`", "0.197`", "15", "0.934`", "0.967`", "0.283`", 
+      "0.638`", "0.17`", "0.314`", "2.2`", "0", "0.106`", "0.39`", "0", 
+      "0.865`", "0.376`", "0.145`", "0.247`", "0.581`"},
+     {"0.4`", "0.178`", "147", "0.02`", "0.109`", "0.424`", "0.042`", 
+      "0.178`", "0.047`", "0.042`", "0.097`", "0", "0.116`", "0.093`", "0", 
+      "0.231`", "0.2`", "0.242`", "0.08`", "0.048`"},
+     {"2.27`", "0", "0", "0.13`", "0.7`", "1.69`", "0", "0", "0", "0.357`", 
+      "0", "0", "0", "0", "0", "3.46`", "0", "0", "0", "0.39`"},
+     {"0", "719", "28129", "509", "654", "447", "259", "8", "2600", "126", 
+      "0", "0", "0", "0", "0", "136", "0", "8190", "623", "409"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.6173780646412024`*^9},
+ FontSize->12]
+}, Open  ]],
+
+Cell[TextData[{
+ "What does the ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    StyleBox["j",
+     FontWeight->"Plain",
+     FontSlant->"Plain",
+     FontTracking->"Plain",
+     FontVariations->{"CompatibilityType"->0,
+     "Masked"->False,
+     "Outline"->False,
+     "RotationAngle"->0,
+     "Shadow"->False,
+     "StrikeThrough"->False,
+     "Underline"->False}], "th"], TraditionalForm]]],
+ " column in this matrix represent?  Which entry in this matrix tells you how \
+much vitamin C is found in 100 g of vanilla ice cream?"
+}], "Text",
+ FontFamily->"Arial"],
+
+Cell[TextData[{
+ "4.  A particularly math-savvy sumo wrestler wanted to adhere to a strict \
+diet to maintain his weight and strength.  Table 3 lists his desired \
+nutritional intake for one day.  The entries in Table 3 are stored in the \
+vector ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "1"], TraditionalForm]]],
+ " which follows this exercise. Using Table 2 he was able to decide on an \
+optimal diet to give him this combination of nutrients.  How much of each of \
+the above foods were in his diet?  "
+}], "Text",
+ FontFamily->"Arial"],
+
+Cell[TextData[Cell[BoxData[GridBox[{
+   {"Nutrient", "Amount"},
+   {"Calories", 
+    RowBox[{"8279.12", " ", "kcal"}]},
+   {"Protein", 
+    RowBox[{"608.81", "g"}]},
+   {"Fat", 
+    RowBox[{"387.6", "g"}]},
+   {"Carbohydrates", 
+    RowBox[{"604.48", "g"}]},
+   {"Calcium", 
+    RowBox[{"4067.42", "mg"}]},
+   {"Iron", 
+    RowBox[{"93.34", "mg"}]},
+   {"Magnesium", 
+    RowBox[{"1714.73", "mg"}]},
+   {"Phosphorus", 
+    RowBox[{"8488.03", "mg"}]},
+   {"Potassium", 
+    RowBox[{"18023.48", "mg"}]},
+   {"Sodium", 
+    RowBox[{"8846.38", "mg"}]},
+   {"Zinc", 
+    RowBox[{"36009.75", "mg"}]},
+   {"Copper", 
+    RowBox[{"6.67", "mcg"}]},
+   {
+    RowBox[{"Vitamin", " ", "C"}], 
+    RowBox[{"604.06", "mg"}]},
+   {"Thiamine", 
+    RowBox[{"6.77", "mg"}]},
+   {"Riboflavin", 
+    RowBox[{"10.61", "mg"}]},
+   {"Niacin", 
+    RowBox[{"28212.10", "mg"}]},
+   {
+    RowBox[{"Pantothenic", " ", "Acid"}], 
+    RowBox[{"103.11", "mg"}]},
+   {
+    RowBox[{"Vitamin", " ", "B6"}], 
+    RowBox[{"189.81", "mg"}]},
+   {
+    RowBox[{"Vitamin", " ", "B12"}], 
+    RowBox[{"51.78", "mcg"}]},
+   {
+    RowBox[{"Vitamin", " ", "A"}], 
+    RowBox[{"95382.93", "IU"}]}
+  },
+  GridBoxDividers->{
+   "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+    "RowsIndexed" -> {}}]],
+ FontFamily->"Arial"]], "Text",
+ TextAlignment->Center],
+
+Cell["Table 3: Sumo Wrestler Input", "Text",
+ TextAlignment->Center,
+ FontFamily->"Arial"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["v", "1"], "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "8279.12", ",", " ", "608.81", ",", " ", "387.60", ",", " ", "604.48", 
+     ",", " ", "4067.42", ",", " ", "93.34", ",", " ", "1714.73", ",", " ", 
+     "8488.03", ",", " ", "18023.48", ",", "\n", " ", "8846.38", ",", " ", 
+     "36009.75", ",", " ", "6.67", ",", " ", "604.06", ",", " ", "6.77", ",", 
+     " ", "10.61", ",", " ", "28212.10", ",", " ", "103.11", ",", " ", 
+     "189.81", ",", " ", "51.78", ",", " ", "95382.93"}], "}"}]}], 
+  "\n"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "8279.12`", ",", "608.81`", ",", "387.6`", ",", "604.48`", ",", "4067.42`", 
+   ",", "93.34`", ",", "1714.73`", ",", "8488.03`", ",", "18023.48`", ",", 
+   "8846.38`", ",", "36009.75`", ",", "6.67`", ",", "604.06`", ",", "6.77`", 
+   ",", "10.61`", ",", "28212.1`", ",", "103.11`", ",", "189.81`", ",", 
+   "51.78`", ",", "95382.93`"}], "}"}]], "Output",
+ CellChangeTimes->{3.6173780647702093`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "5. The United States Food and Drug Administration (FDA) provides \
+Recommended Daily Values for use on food labels.Table 4 gives the FDA's \
+recommendations, which are also stored in the vector ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "2"], TraditionalForm]]],
+ " which  follows this exercise.  Is it possible to combine the foods from \
+the table to approximate these nutritional values?"
+}], "Text",
+ FontFamily->"Arial"],
+
+Cell[TextData[Cell[BoxData[GridBox[{
+   {"Nutrient", "Amount"},
+   {"Calories", 
+    RowBox[{"2000", "kcal"}]},
+   {"Protein", 
+    RowBox[{"50", "g"}]},
+   {"Fat", 
+    RowBox[{"65", "g"}]},
+   {"Carbohydrates", 
+    RowBox[{"300", "g"}]},
+   {"Calcium", 
+    RowBox[{"1000", "mg"}]},
+   {"Iron", 
+    RowBox[{"18", "mg"}]},
+   {"Magnesium", 
+    RowBox[{"400", "mg"}]},
+   {"Phosphorus", 
+    RowBox[{"1000", "mg"}]},
+   {"Potassium", 
+    RowBox[{"3500", "mg"}]},
+   {"Sodium", 
+    RowBox[{"2400", "mg"}]},
+   {"Zinc", 
+    RowBox[{"15", "mg"}]},
+   {"Copper", 
+    RowBox[{"2000", "mcg"}]},
+   {
+    RowBox[{"Vitamin", " ", "C"}], 
+    RowBox[{"60", "mg"}]},
+   {"Thiamine", 
+    RowBox[{"2", "mg"}]},
+   {"Riboflavin", 
+    RowBox[{"2", "mg"}]},
+   {"Niacin", 
+    RowBox[{"20", "mg"}]},
+   {
+    RowBox[{"Pantothenic", " ", "Acid"}], 
+    RowBox[{"10", "mg"}]},
+   {
+    RowBox[{"Vitamin", " ", "B6"}], 
+    RowBox[{"2", "mg"}]},
+   {
+    RowBox[{"Vitamin", " ", "B12"}], 
+    RowBox[{"6", "mcg"}]},
+   {
+    RowBox[{"Vitamin", " ", "A"}], 
+    RowBox[{"5000", "IU"}]}
+  },
+  GridBoxDividers->{
+   "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+    "RowsIndexed" -> {}}]],
+ FontFamily->"Arial"]], "Text",
+ TextAlignment->Center,
+ FontFamily->"Arial"],
+
+Cell["Table 4: FDA Recommended Daily Values", "Text",
+ TextAlignment->Center,
+ FontFamily->"Arial"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["v", "2"], "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "2000", ",", " ", "50", ",", " ", "65", ",", " ", "300", ",", " ", "1000",
+      ",", " ", "18", ",", " ", "400", ",", " ", "1000", ",", " ", "3500", 
+     ",", " ", "2400", ",", " ", "15", ",", " ", "2000", ",", " ", "60", ",", 
+     " ", "2", ",", " ", "2", ",", " ", "20", ",", " ", "10", ",", " ", "2", 
+     ",", " ", "6", ",", " ", "5000"}], "}"}]}], "\n"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2000", ",", "50", ",", "65", ",", "300", ",", "1000", ",", "18", ",", 
+   "400", ",", "1000", ",", "3500", ",", "2400", ",", "15", ",", "2000", ",", 
+   "60", ",", "2", ",", "2", ",", "20", ",", "10", ",", "2", ",", "6", ",", 
+   "5000"}], "}"}]], "Output",
+ CellChangeTimes->{3.6173780647852106`*^9}]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Reference:",
+ FontWeight->"Bold"]], "Text"],
+
+Cell["\<\
+U.S. Department of Agriculture, Agricultural Research Service. 2001. USDA \
+Nutrient Database for Standard Reference, Release 14. Nutrient Data \
+Laboratory Home Page, http://www.nal.usda.gov/fnic/foodcomp
+\
+\>", "Text"]
+}, Open  ]]
+},
+WindowSize->{1006, 648},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+ShowCellLabel->False,
+FontFamily->"Arial",
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "WindowsANSI"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 30, 0, 99, "Title"],
+Cell[612, 24, 218, 3, 33, "Subsubtitle"],
+Cell[833, 29, 223, 6, 68, "Text"],
+Cell[1059, 37, 1157, 51, 24, "DisplayFormula"],
+Cell[2219, 90, 1446, 30, 241, "Text"],
+Cell[3668, 122, 3150, 110, 449, "Text"],
+Cell[6821, 234, 106, 2, 30, "Text"],
+Cell[6930, 238, 3614, 97, 455, "Text"],
+Cell[10547, 337, 3504, 95, 455, "Text"],
+Cell[14054, 434, 137, 4, 30, "Text"],
+Cell[14194, 440, 69, 2, 30, "Text"],
+Cell[14266, 444, 414, 7, 68, "Text"],
+Cell[14683, 453, 114, 3, 30, "Text"],
+Cell[14800, 458, 137, 4, 30, "Text"],
+Cell[14940, 464, 136, 4, 30, "Text"],
+Cell[15079, 470, 406, 7, 68, "Text"],
+Cell[15488, 479, 165, 4, 30, "Text"],
+Cell[15656, 485, 89, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[15770, 490, 6560, 125, 521, "Input"],
+Cell[22333, 617, 4099, 69, 321, "Output"]
+}, Open  ]],
+Cell[26447, 689, 567, 19, 51, "Text"],
+Cell[27017, 710, 548, 12, 68, "Text"],
+Cell[27568, 724, 1334, 52, 448, "Text"],
+Cell[28905, 778, 89, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[29019, 784, 565, 12, 81, "Input"],
+Cell[29587, 798, 440, 8, 61, "Output"]
+}, Open  ]],
+Cell[30042, 809, 450, 10, 68, "Text"],
+Cell[30495, 821, 1278, 53, 448, "Text"],
+Cell[31776, 876, 99, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[31900, 882, 476, 10, 61, "Input"],
+Cell[32379, 894, 344, 7, 40, "Output"]
+}, Open  ]],
+Cell[32738, 904, 67, 1, 30, "Text"],
+Cell[32808, 907, 230, 5, 68, "Text"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
